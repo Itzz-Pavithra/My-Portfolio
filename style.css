@@ -335,32 +335,34 @@ section {
     z-index: 0;
 }
 
-.profile-placeholder {
+/* Add these styles to your existing CSS file */
+
+/* Profile image styling */
+.profile-image {
     width: 280px;
     height: 280px;
     background-color: var(--secondary-color);
     border-radius: var(--border-radius-circle);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
     z-index: 2;
     box-shadow: 0 10px 30px var(--shadow-color);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.profile-placeholder i {
-    font-size: 100px;
-    color: var(--white);
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-.profile-placeholder p {
-    margin-top: var(--spacing-sm);
-    color: var(--white);
-    font-weight: 500;
+/* Hide the placeholder when using the actual image */
+.profile-placeholder {
+    display: none;
 }
-
 /* About Section */
 .about {
     background-color: var(--bg-color);
