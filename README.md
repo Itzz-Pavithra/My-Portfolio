@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Premium Software Engineer Portfolio - Pavithra J
 
 A premium, modern, highly animated, and fully responsive personal portfolio website designed for a top-tier Full Stack Developer. Built using HTML5, CSS3 (Vanilla), and clean Vanilla JavaScript—strictly adhering to performance guidelines with zero framework dependencies.
@@ -52,3 +53,7 @@ portfolio/
 2. Place a valid PDF resume under `assets/resume/Pavithra_J_Resume.pdf`.
 3. Open `index.html` in any modern web browser.
 4. (Optional) Run a local development environment (e.g. VS Code Live Server or python `http.server`) to test load states.
+=======
+# My-Portfolio
+A modern, responsive personal portfolio website showcasing my skills, projects, education, certifications, and experience as a Full Stack Developer. Built with HTML, CSS, and JavaScript.
+>>>>>>> 4c6d76e186cd01294cf7513b5b91c06962d3c9aa
