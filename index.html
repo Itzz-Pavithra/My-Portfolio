@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Pavithra J, a premium Full Stack Developer. Interactive personal website highlighting skills, education, internships, and projects.">
+    <title>Pavithra J | Full Stack Developer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Page Loading Animation -->
+    <div id="loader">
+        <div class="loader-content">
+            <span class="loader-logo">PAVITHRA J</span>
+            <div class="loader-bar-bg">
+                <div class="loader-bar"></div>
+            </div>
+            <span class="loader-text">Loading Excellence...</span>
+        </div>
+    </div>
+
+    <!-- Cursor Glow Tracking Element -->
+    <div id="cursor-glow"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" id="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">PAVITHRA J</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            
+            <nav class="nav-links-container" id="nav-menu">
+                <ul class="nav-menu-list">
+                    <li><a href="#home" class="nav-link active-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#internships" class="nav-link">Internships</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="hamburger-menu" id="hamburger-btn" aria-label="Toggle Navigation Menu">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <!-- Optimized Particle Canvas -->
+        <canvas id="hero-particles"></canvas>
+        
+        <div class="hero-glow-circle circle-1"></div>
+        <div class="hero-glow-circle circle-2"></div>
+
+        <div class="container hero-container">
+            <div class="hero-left-content" data-reveal="fade-right">
+                <span class="hero-hello">Hello, World! I'm</span>
+                <h1 class="hero-name">PAVITHRA J</h1>
+                <h2 class="hero-title">
+                    <span class="typing-prefix">I am a </span>
+                    <span id="typing-text"></span><span class="typing-cursor">|</span>
+                </h2>
+                
+                <p class="hero-objective">
+                    Passionate and motivated Full Stack Developer with hands-on experience in designing and developing modern web applications using React.js, Svelte, Firebase, JavaScript, Python, and Java. Skilled in building responsive, scalable, and user-friendly applications with strong problem-solving abilities. Eager to contribute to innovative software solutions while continuously learning emerging technologies and growing as a software professional.
+                </p>
+
+                <!-- Hero Contact Info Row -->
+                <div class="hero-contact-links">
+                    <a href="tel:+919025258891" class="hero-contact-item" title="Call Me">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 9025258891</span>
+                    </a>
+                    <a href="mailto:pavithra.workss@gmail.com" class="hero-contact-item" title="Email Me">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>pavithra.workss@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/pavithraworks" target="_blank" rel="noopener" class="hero-contact-item" title="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin animate-pulse"></i>
+                        <span>linkedin.com/in/pavithraworks</span>
+                    </a>
+                    <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" class="hero-contact-item" title="GitHub Repository">
+                        <i class="fa-brands fa-github animate-pulse"></i>
+                        <span>github.com/Itzz-Pavithra</span>
+                    </a>
+                    <div class="hero-contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Cuddalore, Tamil Nadu</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta-buttons">
+                    <a href="assets/resume/Pavithra_J_Resume.pdf" download class="btn-primary ripple-btn">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn-secondary ripple-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-right-content" data-reveal="fade-left">
+                <!-- Floating Developer Icons & Parallax Container -->
+                <div class="parallax-scene-wrapper" id="parallax-scene">
+                    <div class="layer" data-depth="0.1">
+                        <div class="laptop-illustration">
+                            <!-- Custom HTML5 / CSS Glassmorphic laptop with glowing lines -->
+                            <div class="laptop-screen-frame">
+                                <div class="laptop-screen-glass">
+                                    <div class="screen-header">
+                                        <div class="screen-dot red"></div>
+                                        <div class="screen-dot yellow"></div>
+                                        <div class="screen-dot green"></div>
+                                        <span class="screen-tab"><i class="fa-solid fa-code"></i> index.js</span>
+                                    </div>
+                                    <div class="screen-body-code">
+                                        <pre><code id="live-code"></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="laptop-keyboard-base"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Developer Icons -->
+                    <div class="layer floating-dev-icon icon-js" data-depth="0.4">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <div class="layer floating-dev-icon icon-react" data-depth="0.6">
+                        <i class="fa-brands fa-react"></i>
+                    </div>
+                    <div class="layer floating-dev-icon icon-python" data-depth="0.3">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <div class="layer floating-dev-icon icon-database" data-depth="0.5">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-down-indicator">
+            <a href="#about" class="mouse-scroll-icon">
+                <span class="mouse-wheel"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">Get To Know Me</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="about-grid">
+                <!-- Left: Animated SVG profile frame -->
+                <div class="about-visual-col" data-reveal="fade-right">
+                    <div class="profile-frame-card tilt-card">
+                        <div class="profile-glow-effect"></div>
+                        <div class="profile-inner-border">
+                            <div class="avatar-placeholder">
+                                <i class="fa-solid fa-user-gear dev-avatar-icon"></i>
+                                <div class="avatar-particles">
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-badge">
+                            <i class="fa-solid fa-code-branch"></i> Full Stack Developer
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Career Objective only -->
+                <div class="about-content-col" data-reveal="fade-left">
+                    <div class="glass-card about-info-card">
+                        <p class="about-description-text">
+                            Passionate and motivated Full Stack Developer with hands-on experience in designing and developing modern web applications using React.js, Svelte, Firebase, JavaScript, Python, and Java. Skilled in building responsive, scalable, and user-friendly applications with strong problem-solving abilities. Eager to contribute to innovative software solutions while continuously learning emerging technologies and growing as a software professional.
+                        </p>
+                        
+                        <!-- Simple Profile Grid Stats -->
+                        <div class="profile-stats-grid">
+                            <div class="stat-box">
+                                <span class="stat-number" data-count="2">0</span>
+                                <span class="stat-label">Degrees & Certs</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number" data-count="4">0</span>
+                                <span class="stat-label">Academic Projects</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-number" data-count="2">0</span>
+                                <span class="stat-label">Internships</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section" id="education">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">My Learning Path</span>
+                <h2 class="section-title">Education</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Vertical Timeline Line -->
+                <div class="timeline-main-line"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item" data-reveal="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="timeline-period">2025 – 2027 (Currently Pursuing)</span>
+                        <h3 class="timeline-degree">Master of Computer Applications (MCA)</h3>
+                        <span class="timeline-institution">Sona College of Technology, Salem</span>
+                        <div class="timeline-performance">
+                            <span class="perf-metric">CGPA</span>
+                            <span class="perf-val" data-val="8.33">8.33</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item" data-reveal="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-university"></i>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="timeline-period">2022 – 2025</span>
+                        <h3 class="timeline-degree">Bachelor of Commerce (Computer Applications)</h3>
+                        <span class="timeline-institution">Sri Manakula Vinayagar Engineering College, Puducherry</span>
+                        <div class="timeline-performance">
+                            <span class="perf-metric">CGPA</span>
+                            <span class="perf-val" data-val="7.94">7.94</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item" data-reveal="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="timeline-period">HSC</span>
+                        <h3 class="timeline-degree">Higher Secondary Certificate (HSC)</h3>
+                        <span class="timeline-institution">St. Joseph Matric Higher Secondary School, Cuddalore</span>
+                        <div class="timeline-performance">
+                            <span class="perf-metric">Percentage</span>
+                            <span class="perf-val" data-val="88.8">88.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item" data-reveal="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-school-flag"></i>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="timeline-period">SSLC</span>
+                        <h3 class="timeline-degree">Secondary School Leaving Certificate (SSLC)</h3>
+                        <span class="timeline-institution">St. Joseph Matric Higher Secondary School, Cuddalore</span>
+                        <div class="timeline-performance">
+                            <span class="perf-metric">Percentage</span>
+                            <span class="perf-val" data-val="59">59%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Expertise (Skills) Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">Technical Arsenal</span>
+                <h2 class="section-title">Technical Expertise</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <!-- Skills Categories Grid -->
+            <div class="skills-categories-grid">
+                
+                <!-- Category 1: Programming Languages -->
+                <div class="skills-card glass-card tilt-card" data-reveal="fade-up">
+                    <div class="skill-card-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="skill-card-title">Programming Languages</h3>
+                    <ul class="skills-progress-list">
+                        <li>
+                            <div class="skill-meta">
+                                <span>Java</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>Python</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="90%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Web Technologies -->
+                <div class="skills-card glass-card tilt-card" data-reveal="fade-up" data-delay="100">
+                    <div class="skill-card-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="skill-card-title">Web Technologies</h3>
+                    <ul class="skills-progress-list">
+                        <li>
+                            <div class="skill-meta">
+                                <span>HTML5 / CSS3</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="95%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>React.js</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>Svelte</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="75%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Database -->
+                <div class="skills-card glass-card tilt-card" data-reveal="fade-up" data-delay="200">
+                    <div class="skill-card-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="skill-card-title">Database</h3>
+                    <ul class="skills-progress-list">
+                        <li>
+                            <div class="skill-meta">
+                                <span>SQL</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="80%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>MongoDB</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="85%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>Firebase</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="80%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 4: Deployment & Version Control -->
+                <div class="skills-card glass-card tilt-card" data-reveal="fade-up" data-delay="300">
+                    <div class="skill-card-icon">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                    </div>
+                    <h3 class="skill-card-title">Deployment & Git</h3>
+                    <ul class="skills-progress-list">
+                        <li>
+                            <div class="skill-meta">
+                                <span>Git & GitHub</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="90%"></div></div>
+                        </li>
+                        <li>
+                            <div class="skill-meta">
+                                <span>Vercel</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-outer"><div class="skill-bar-inner" data-width="85%"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Areas of Interest Sub-section -->
+            <div class="skills-subsection-wrapper">
+                <h3 class="skills-sub-title" data-reveal="fade-up">Areas of Interest</h3>
+                <div class="interests-grid">
+                    <div class="interest-card glass-card" data-reveal="zoom-in">
+                        <div class="interest-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <h4>Full Stack Development</h4>
+                    </div>
+                    <div class="interest-card glass-card" data-reveal="zoom-in" data-delay="100">
+                        <div class="interest-icon"><i class="fa-solid fa-window-restore"></i></div>
+                        <h4>Web Application Development</h4>
+                    </div>
+                    <div class="interest-card glass-card" data-reveal="zoom-in" data-delay="200">
+                        <div class="interest-icon"><i class="fa-solid fa-crop-simple"></i></div>
+                        <h4>Frontend Development</h4>
+                    </div>
+                    <div class="interest-card glass-card" data-reveal="zoom-in" data-delay="300">
+                        <div class="interest-icon"><i class="fa-solid fa-server"></i></div>
+                        <h4>Database Management</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills (Chips) Sub-section -->
+            <div class="skills-subsection-wrapper">
+                <h3 class="skills-sub-title" data-reveal="fade-up">Technical Concepts</h3>
+                <div class="skill-chips-container" data-reveal="fade-up">
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-cubes"></i>
+                        <span>Object-Oriented Programming</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>Responsive Web Design</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-exchange-alt"></i>
+                        <span>REST API Integration</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Firebase Authentication</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <span>Firestore Database</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-brands fa-git-alt"></i>
+                        <span>Git & GitHub</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-code-compare"></i>
+                        <span>Version Control</span>
+                    </div>
+                    <div class="skill-chip">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section class="internships-section" id="internships">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">Real-World Exposure</span>
+                <h2 class="section-title">Internships</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="internships-grid">
+                
+                <!-- Internship 1 -->
+                <div class="internship-card glass-card tilt-card" data-reveal="fade-up">
+                    <div class="intern-card-glow"></div>
+                    <div class="internship-header">
+                        <div class="company-logo-placeholder">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="internship-title-group">
+                            <h3>AI Chatbot Development Intern</h3>
+                            <span class="company-name">Datanerdz.AI</span>
+                            <span class="intern-date"><i class="fa-solid fa-calendar-days"></i> July 2024</span>
+                        </div>
+                    </div>
+                    <div class="internship-body">
+                        <ul class="intern-bullets-list">
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Developed an AI-powered chatbot using Python.</li>
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Improved automated customer interaction through intelligent response generation.</li>
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Worked with chatbot logic and Natural Language Processing concepts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Internship 2 -->
+                <div class="internship-card glass-card tilt-card" data-reveal="fade-up" data-delay="150">
+                    <div class="intern-card-glow"></div>
+                    <div class="internship-header">
+                        <div class="company-logo-placeholder">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div class="internship-title-group">
+                            <h3>Digital Marketing & Web Development Intern</h3>
+                            <span class="company-name">Netsea Tech Solution</span>
+                            <span class="intern-date"><i class="fa-solid fa-calendar-days"></i> December 2023</span>
+                        </div>
+                    </div>
+                    <div class="internship-body">
+                        <ul class="intern-bullets-list">
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Designed responsive websites using HTML, CSS, and JavaScript.</li>
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Developed client-based web pages with a focus on responsiveness and usability.</li>
+                            <li><i class="fa-solid fa-circle-chevron-right"></i> Enhanced website performance and user experience.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">My Creative Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card glass-card tilt-card" data-reveal="fade-up">
+                    <div class="project-header">
+                        <div class="project-icon-badge">
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="live-demo-dummy" aria-label="Live Demo"><i class="fa-solid fa-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status">Currently Working</span>
+                        <h3 class="project-title">Community Skills Exchange</h3>
+                        <div class="project-tech-badges">
+                            <span>React.js</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <p class="project-description">
+                            Developing a platform that enables users to exchange skills and connect with learners and mentors. Implementing authentication, profile management, and skill-based matching. Designing responsive and interactive user interfaces.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card tilt-card" data-reveal="fade-up" data-delay="100">
+                    <div class="project-header">
+                        <div class="project-icon-badge">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="live-demo-dummy" aria-label="Live Demo"><i class="fa-solid fa-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status">Completed</span>
+                        <h3 class="project-title">Job Portal</h3>
+                        <div class="project-tech-badges">
+                            <span>React.js</span>
+                            <span>Salesforce</span>
+                        </div>
+                        <p class="project-description">
+                            Developed a job portal for job seekers and recruiters. Implemented job posting, application management, and profile creation. Integrated Salesforce to manage recruitment-related information efficiently.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card tilt-card" data-reveal="fade-up" data-delay="200">
+                    <div class="project-header">
+                        <div class="project-icon-badge">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="live-demo-dummy" aria-label="Live Demo"><i class="fa-solid fa-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status">Completed</span>
+                        <h3 class="project-title">Life-link -- Blood Donation Management System</h3>
+                        <div class="project-tech-badges">
+                            <span>Svelte</span>
+                            <span>Firebase</span>
+                        </div>
+                        <p class="project-description">
+                            Developed a blood donation management system with donor registration and recipient request modules. Integrated Firebase Authentication and Firestore Database. Implemented blood request management, donor eligibility verification, and real-time data synchronization. Designed a responsive and user-friendly interface using Svelte.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card tilt-card" data-reveal="fade-up" data-delay="300">
+                    <div class="project-header">
+                        <div class="project-icon-badge">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+                            <a href="#" class="live-demo-dummy" aria-label="Live Demo"><i class="fa-solid fa-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-status">Completed</span>
+                        <h3 class="project-title">Quiz Quest</h3>
+                        <div class="project-tech-badges">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <p class="project-description">
+                            Developed a responsive online quiz application. Implemented multiple-choice questions, score calculation, and result display. Designed an interactive user interface.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section" id="certifications">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">Validated Credentials</span>
+                <h2 class="section-title">Certifications</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="certifications-timeline">
+                <div class="cert-timeline-line"></div>
+
+                <!-- Certification 1 -->
+                <div class="cert-item" data-reveal="fade-up">
+                    <div class="cert-marker"></div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-box">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-issuer">SymphoZen Labs in association with Sona College of Technology</span>
+                            <h3 class="cert-name">Building Modern Web Applications with AI (60 Hours)</h3>
+                            <span class="cert-date"><i class="fa-solid fa-calendar-day"></i> Issued: June 26, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 2 -->
+                <div class="cert-item" data-reveal="fade-up" data-delay="100">
+                    <div class="cert-marker"></div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-box">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-issuer">NASSCOM</span>
+                            <h3 class="cert-name">Data Processing and Visualization</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 3 -->
+                <div class="cert-item" data-reveal="fade-up" data-delay="200">
+                    <div class="cert-marker"></div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon-box">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-issuer">Infosys Springboard</span>
+                            <h3 class="cert-name">Time Management</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Curriculars & Languages -->
+    <section class="extracurricular-languages-section">
+        <div class="container ect-lang-container">
+            
+            <!-- Left: Extra Curriculars (animated checklist cards) -->
+            <div class="extracurriculars-col" data-reveal="fade-right">
+                <div class="section-title-wrapper align-left">
+                    <span class="section-subtitle">Beyond Core Studies</span>
+                    <h2 class="section-title">Extra Curricular Activities</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="extracurriculars-list">
+                    <div class="extra-card glass-card" data-reveal="fade-up">
+                        <div class="extra-check-box">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="extra-card-text">
+                            First Class with Distinction in English Typing
+                        </div>
+                    </div>
+                    <div class="extra-card glass-card" data-reveal="fade-up" data-delay="100">
+                        <div class="extra-check-box">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="extra-card-text">
+                            Conducted Intra-College Technical Events
+                        </div>
+                    </div>
+                    <div class="extra-card glass-card" data-reveal="fade-up" data-delay="200">
+                        <div class="extra-check-box">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="extra-card-text">
+                            Active Participant in Technical Workshops and Coding Activities
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Languages -->
+            <div class="languages-col" data-reveal="fade-left">
+                <div class="section-title-wrapper align-left">
+                    <span class="section-subtitle">Communication Abilities</span>
+                    <h2 class="section-title">Languages</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="languages-grid">
+                    <div class="language-card glass-card tilt-card" data-reveal="fade-up">
+                        <div class="lang-icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3>English</h3>
+                        <div class="lang-proficiency">
+                            <span>Professional Proficiency</span>
+                            <div class="lang-level-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="language-card glass-card tilt-card" data-reveal="fade-up" data-delay="100">
+                        <div class="lang-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3>Tamil</h3>
+                        <div class="lang-proficiency">
+                            <span>Native / Bilingual</span>
+                            <div class="lang-level-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title-wrapper" data-reveal="fade-up">
+                <span class="section-subtitle">Let's Connect</span>
+                <h2 class="section-title">Contact Me</h2>
+                <div class="section-title-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Contact info cards -->
+                <div class="contact-info-col" data-reveal="fade-right">
+                    <h3 class="contact-sub-title">Contact Information</h3>
+                    <p class="contact-intro-text">
+                        Feel free to get in touch. I am open to discussing full-stack developer roles, internships, and creative collaborations.
+                    </p>
+
+                    <div class="contact-cards-stack">
+                        
+                        <!-- Phone -->
+                        <a href="tel:+919025258891" class="contact-detail-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <span>Call Me</span>
+                                <strong>+91 9025258891</strong>
+                            </div>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:pavithra.workss@gmail.com" class="contact-detail-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <span>Email Me</span>
+                                <strong>pavithra.workss@gmail.com</strong>
+                            </div>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com/in/pavithraworks" target="_blank" rel="noopener" class="contact-detail-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <span>LinkedIn</span>
+                                <strong>linkedin.com/in/pavithraworks</strong>
+                            </div>
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" class="contact-detail-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <span>GitHub</span>
+                                <strong>Itzz-Pavithra</strong>
+                            </div>
+                        </a>
+
+                        <!-- Location -->
+                        <div class="contact-detail-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="contact-card-content">
+                                <span>Location</span>
+                                <strong>Cuddalore, Tamil Nadu</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Contact form column -->
+                <div class="contact-form-col" data-reveal="fade-left">
+                    <form class="glass-card contact-form" id="portfolio-contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully! (Demonstration Only)'); this.reset();">
+                        <h3 class="contact-sub-title">Send a Message</h3>
+                        
+                        <div class="form-group">
+                            <label for="form-name">Name</label>
+                            <input type="text" id="form-name" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="form-email">Email</label>
+                            <input type="email" id="form-email" placeholder="johndoe@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" placeholder="Collaboration / Job Opportunity" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary ripple-btn form-submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <a href="#home" class="footer-logo">&lt;PAVITHRA J/&gt;</a>
+                <p class="footer-tagline">Full Stack Developer</p>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com/in/pavithraworks" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Itzz-Pavithra" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:pavithra.workss@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links-grid">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

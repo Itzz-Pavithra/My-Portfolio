@@ -1,0 +1,322 @@
+/* 
+   ==========================================================================
+   PAVITHRA J - PORTFOLIO RESPONSIVE BREAKPOINTS
+   ==========================================================================
+*/
+
+/* 1. Large Laptops & Small Desktops (max-width: 1200px) */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 58%; /* Shrink rem base slightly to scale layout elements */
+    }
+    
+    .hero-container {
+        gap: 4rem;
+    }
+    
+    .hero-name {
+        font-size: 5.5rem;
+    }
+}
+
+/* 2. Tablets & Small Laptops (max-width: 992px) */
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 55%;
+    }
+    
+    section {
+        padding: 8rem 0;
+    }
+    
+    /* Hero section grid adjustment */
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 5rem;
+    }
+    
+    .hero-left-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-contact-links {
+        justify-content: center;
+        max-width: 600px;
+    }
+    
+    .hero-cta-buttons {
+        justify-content: center;
+    }
+    
+    .hero-right-content {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .parallax-scene-wrapper {
+        height: 380px;
+        max-width: 450px;
+    }
+    
+    .laptop-illustration {
+        width: 360px;
+    }
+    
+    .laptop-screen-frame {
+        height: 220px;
+    }
+    
+    .laptop-keyboard-base {
+        width: 410px;
+        margin-left: -25px;
+    }
+    
+    /* About section layout */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+    
+    .about-content-col {
+        order: 1;
+    }
+    
+    .about-visual-col {
+        order: 2;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Skills and Projects grids */
+    .skills-categories-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .interests-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .internships-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+    
+    .ect-lang-container {
+        grid-template-columns: 1fr;
+        gap: 6rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+}
+
+/* 3. Small Tablets & Phones (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    /* Hide Custom Cursor Glow on Touch Devices */
+    #cursor-glow, #cursor-dot {
+        display: none !important;
+    }
+    
+    /* Mobile Hamburger Menu */
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-links-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(10, 41, 71, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(243, 228, 201, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1005;
+        transition: var(--transition-smooth);
+    }
+    
+    .nav-links-container.open {
+        right: 0;
+    }
+    
+    .nav-menu-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
+    
+    .nav-link {
+        font-size: 1.8rem;
+    }
+    
+    /* Timeline Mobile styling adjustments */
+    .timeline-main-line {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-icon {
+        left: 5px;
+    }
+    
+    .timeline-connector {
+        left: 37px;
+        width: 13px;
+    }
+    
+    /* Certifications Mobile timeline */
+    .cert-timeline-line {
+        left: 15px;
+    }
+    
+    .cert-item {
+        padding-left: 45px;
+    }
+    
+    .cert-marker {
+        left: 9px;
+    }
+    
+    .cert-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    /* Footer bottom structure */
+    .footer-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+    
+    .footer-bottom-flex {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* 4. Extra Small Phones (max-width: 576px) */
+@media screen and (max-width: 576px) {
+    html {
+        font-size: 50%;
+    }
+    
+    section {
+        padding: 6rem 0;
+    }
+    
+    .hero-name {
+        font-size: 3.8rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .hero-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5rem;
+    }
+    
+    .hero-cta-buttons .btn-primary,
+    .hero-cta-buttons .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Illustration scaling */
+    .parallax-scene-wrapper {
+        height: 280px;
+    }
+    
+    .laptop-illustration {
+        width: 280px;
+    }
+    
+    .laptop-screen-frame {
+        height: 170px;
+        border-width: 8px;
+    }
+    
+    .laptop-keyboard-base {
+        width: 320px;
+        margin-left: -20px;
+    }
+    
+    .floating-dev-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.6rem;
+    }
+    
+    /* About Stat Blocks */
+    .profile-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-info-card {
+        padding: 2.5rem;
+    }
+    
+    .profile-frame-card {
+        width: 260px;
+        height: 310px;
+    }
+    
+    .dev-avatar-icon {
+        font-size: 6rem;
+    }
+    
+    /* Interests sub */
+    .interests-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .languages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        padding: 2.5rem;
+    }
+    
+    /* Footer logo spacing */
+    .footer-wrapper {
+        padding: 6rem 0 2rem;
+    }
+    
+    .back-to-top {
+        bottom: 2rem;
+        right: 2rem;
+        width: 40px;
+        height: 40px;
+    }
+}

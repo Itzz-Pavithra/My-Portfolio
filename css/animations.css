@@ -1,0 +1,204 @@
+/* 
+   ==========================================================================
+   PAVITHRA J - PORTFOLIO ANIMATIONS & KEYFRAMES
+   ==========================================================================
+*/
+
+/* 1. Page Loader Animations */
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.6; text-shadow: 0 0 10px rgba(243, 228, 201, 0.2); }
+    50% { opacity: 1; text-shadow: 0 0 25px rgba(243, 228, 201, 0.7); }
+}
+
+/* 2. Hero Interactive typing & Scrolling indicators */
+@keyframes blinkCaret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes scrollMouse {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(15px); }
+}
+
+/* 3. Float Animations for Floating Developer Icons */
+@keyframes floatingIcon {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        box-shadow: var(--shadow-medium);
+    }
+    100% {
+        transform: translateY(-15px) rotate(8deg);
+        box-shadow: var(--shadow-premium);
+    }
+}
+
+/* 4. Profile Picture Animations */
+@keyframes pulseAvatar {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        color: var(--cream);
+    }
+    50% {
+        transform: scale(1.05) rotate(10deg);
+        color: var(--brown-accent);
+    }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-40px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* 5. Pulsing Pulse Effects */
+.animate-pulse {
+    animation: simplePulse 2.5s infinite alternate;
+}
+
+@keyframes simplePulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.15); opacity: 1; color: var(--brown-accent); }
+}
+
+/* 6. Tilt & Card Hover Effects */
+.tilt-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+
+.tilt-card > * {
+    transform: translateZ(20px); /* Creates 3D depth pop-out */
+}
+
+/* Base Card Glow Effects */
+.skills-card::after,
+.internship-card::after,
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(139, 94, 60, 0.08), transparent 40%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.skills-card:hover::after,
+.internship-card:hover::after,
+.project-card:hover::after {
+    opacity: 1;
+}
+
+/* 7. Scroll Reveal Core Logic (Using Intersection Observer) */
+[data-reveal] {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+[data-reveal="fade-up"] {
+    transform: translateY(50px);
+}
+
+[data-reveal="fade-down"] {
+    transform: translateY(-50px);
+}
+
+[data-reveal="fade-left"] {
+    transform: translateX(50px);
+}
+
+[data-reveal="fade-right"] {
+    transform: translateX(-50px);
+}
+
+[data-reveal="zoom-in"] {
+    transform: scale(0.85);
+}
+
+[data-reveal="zoom-out"] {
+    transform: scale(1.15);
+}
+
+/* Scroll reveal active state class */
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* Stagger delays config */
+[data-reveal][data-delay="50"]  { transition-delay: 50ms; }
+[data-reveal][data-delay="100"] { transition-delay: 100ms; }
+[data-reveal][data-delay="150"] { transition-delay: 150ms; }
+[data-reveal][data-delay="200"] { transition-delay: 200ms; }
+[data-reveal][data-delay="250"] { transition-delay: 250ms; }
+[data-reveal][data-delay="300"] { transition-delay: 300ms; }
+[data-reveal][data-delay="350"] { transition-delay: 350ms; }
+[data-reveal][data-delay="400"] { transition-delay: 400ms; }
+
+/* 8. Extra Specific Animated Triggers */
+/* Skills list slide fill */
+.skills-section.revealed .skill-bar-inner {
+    width: attr(data-width); /* Triggered by scroll script mapping */
+}
+
+/* Timeline vertical expansion */
+.timeline-container.active .timeline-main-line {
+    animation: growLine 2.5s ease-out forwards;
+}
+
+@keyframes growLine {
+    0% { height: 0%; }
+    100% { height: 100%; }
+}
+
+.certifications-timeline.active .cert-timeline-line {
+    animation: growLine 2s ease-out forwards;
+}
+
+/* Morphing Blob Background Design element */
+.morphing-bg-blob {
+    width: 500px;
+    height: 500px;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background: linear-gradient(45deg, rgba(10, 41, 71, 0.4) 0%, rgba(139, 94, 60, 0.2) 100%);
+    animation: morphBlob 12s ease-in-out infinite alternate;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes morphBlob {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        border-radius: 40% 60% 50% 50% / 50% 60% 40% 60%;
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        border-radius: 50% 50% 70% 30% / 40% 40% 60% 70%;
+        transform: rotate(360deg) scale(0.9);
+    }
+}
