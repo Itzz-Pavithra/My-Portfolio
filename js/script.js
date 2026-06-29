@@ -1,100 +1,124 @@
 /* 
    ==========================================================================
    PAVITHRA J - PORTFOLIO CORE SYSTEM SCRIPTS
+   Aesthetic: Clean, scalable, modular, granular production-ready logic.
    ==========================================================================
 */
 
-window.addEventListener('load', () => {
-    // 1. Dismiss Loading Screen
+// ==========================================================================
+// 1. PAGE LOADER CONTROLLER
+// ==========================================================================
+const PageLoader = (() => {
     const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        loader.style.visibility = 'hidden';
-    }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    initStickyHeader();
-    initMobileNav();
-    initScrollProgress();
-    initActiveNavLinks();
-    initButtonRipples();
-    initBackToTop();
-    initContactFormDummyHandler();
-});
+    const hide = () => {
+        if (loader) {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+        }
+    };
 
-/* ==========================================================================
-   1. STICKY HEADER SCROLL CLASS
-   ========================================================================== */
-function initStickyHeader() {
+    const init = () => {
+        window.addEventListener('load', hide);
+    };
+
+    return { init };
+})();
+
+// ==========================================================================
+// 2. GLASSMORPHIC TOAST NOTIFICATION SERVICE
+// ==========================================================================
+const Toast = (() => {
+    let container = null;
+
+    const createContainer = () => {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    };
+
+    const show = (title, message, type = 'success', duration = 4000) => {
+        if (!container) {
+            createContainer();
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+
+        const iconClass = type === 'success' ? 'fa-circle-check success' : 'fa-circle-exclamation error';
+        
+        toast.innerHTML = `
+            <i class="fa-solid ${iconClass} toast-icon"></i>
+            <div class="toast-content">
+                <div class="toast-title">${title}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Close Notification">&times;</button>
+        `;
+
+        container.appendChild(toast);
+
+        // Trigger slide-in transition
+        setTimeout(() => toast.classList.add('show'), 50);
+
+        // Configure auto-dismiss timeout
+        const autoCloseTimeout = setTimeout(() => dismiss(toast), duration);
+
+        // Setup manual dismiss handler
+        const closeBtn = toast.querySelector('.toast-close');
+        closeBtn.addEventListener('click', () => {
+            clearTimeout(autoCloseTimeout);
+            dismiss(toast);
+        });
+    };
+
+    const dismiss = (toast) => {
+        toast.classList.remove('show');
+        toast.addEventListener('transitionend', () => {
+            toast.remove();
+        });
+    };
+
+    return { show };
+})();
+
+// ==========================================================================
+// 3. NAVIGATION CONTROLLER (Sticky header, Mobile toggle, Active links)
+// ==========================================================================
+const Navigation = (() => {
     const navbar = document.getElementById('navbar');
-    if (!navbar) return;
+    const hamburger = document.getElementById('hamburger-btn');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
 
-    window.addEventListener('scroll', () => {
+    const handleScrollSticky = () => {
+        if (!navbar) return;
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
-}
+    };
 
-/* ==========================================================================
-   2. MOBILE NAV TOGGLER
-   ========================================================================== */
-function initMobileNav() {
-    const hamburger = document.getElementById('hamburger-btn');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    if (!hamburger || !navMenu) return;
-
-    // Toggle menu state
-    hamburger.addEventListener('click', (e) => {
+    const toggleMobileMenu = (e) => {
         e.stopPropagation();
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('open');
-    });
+    };
 
-    // Close menu when clicking links
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('open');
-        });
-    });
+    const closeMobileMenu = () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+    };
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    const handleOutsideClick = (e) => {
         if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && e.target !== hamburger) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('open');
+            closeMobileMenu();
         }
-    });
-}
+    };
 
-/* ==========================================================================
-   3. SCROLL PROGRESS INDICATOR
-   ========================================================================== */
-function initScrollProgress() {
-    const progressBar = document.getElementById('scroll-progress');
-    if (!progressBar) return;
-
-    window.addEventListener('scroll', () => {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (window.scrollY / docHeight) * 100;
-        progressBar.style.width = `${scrolled}%`;
-    });
-}
-
-/* ==========================================================================
-   4. ACTIVE NAV LINK ACCORDING TO VIEWPORT
-   ========================================================================== */
-function initActiveNavLinks() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
+    const updateActiveSection = () => {
         let currentSectionId = '';
 
         sections.forEach(section => {
@@ -112,91 +136,169 @@ function initActiveNavLinks() {
                 link.classList.add('active-link');
             }
         });
-    });
-}
+    };
 
-/* ==========================================================================
-   5. BUTTON CLICK RIPPLE EFFECTS
-   ========================================================================== */
-function initButtonRipples() {
-    const rippleButtons = document.querySelectorAll('.ripple-btn');
+    const init = () => {
+        window.addEventListener('scroll', handleScrollSticky);
+        window.addEventListener('scroll', updateActiveSection);
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', toggleMobileMenu);
+            navLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+            document.addEventListener('click', handleOutsideClick);
+        }
+    };
 
-    rippleButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            // Only add ripple if button is directly clicked
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    return { init };
+})();
 
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
-
-            this.appendChild(ripple);
-
-            // Remove ripple span after animation finishes
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-}
-
-/* ==========================================================================
-   6. BACK TO TOP BUTTON TRIGGERS
-   ========================================================================== */
-function initBackToTop() {
+// ==========================================================================
+// 4. SCROLL TRACKER SERVICE (Progress bar & Back-to-top floating button)
+// ==========================================================================
+const ScrollTracker = (() => {
+    const progressBar = document.getElementById('scroll-progress');
     const backToTopBtn = document.getElementById('back-to-top-btn');
-    if (!backToTopBtn) return;
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
+        updateProgress();
+        updateBackToTopButtonVisibility();
+    };
+
+    const updateProgress = () => {
+        if (!progressBar) return;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        progressBar.style.width = `${scrolled}%`;
+    };
+
+    const updateBackToTopButtonVisibility = () => {
+        if (!backToTopBtn) return;
         if (window.scrollY > 400) {
             backToTopBtn.classList.add('show');
         } else {
             backToTopBtn.classList.remove('show');
         }
-    });
+    };
 
-    backToTopBtn.addEventListener('click', () => {
+    const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
-    });
-}
+    };
 
-/* ==========================================================================
-   7. CONTACT FORM HANDLER (DEMONSTRATIVE & ATS-FRIENDLY ONLY)
-   ========================================================================== */
-function initContactFormDummyHandler() {
-    const contactForm = document.getElementById('portfolio-contact-form');
-    if (!contactForm) return;
+    const init = () => {
+        window.addEventListener('scroll', handleScroll);
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', scrollToTop);
+        }
+    };
 
-    contactForm.addEventListener('submit', (e) => {
+    return { init };
+})();
+
+// ==========================================================================
+// 5. BUTTON RIPPLE EFFECT SYSTEM
+// ==========================================================================
+const ButtonEffects = (() => {
+    const rippleButtons = document.querySelectorAll('.ripple-btn');
+
+    const createRipple = (e, button) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+
+        button.appendChild(ripple);
+
+        // Remove element after keyframe completes
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    };
+
+    const init = () => {
+        rippleButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => createRipple(e, btn));
+        });
+    };
+
+    return { init };
+})();
+
+// ==========================================================================
+// 6. CONTACT FORM CONTROLLER (EmailJS integration + validations)
+// ==========================================================================
+const ContactForm = (() => {
+    const form = document.getElementById('portfolio-contact-form');
+    const submitBtn = form?.querySelector('.form-submit-btn');
+    const dummies = document.querySelectorAll('.live-demo-dummy');
+
+    const setSendingState = (isSending) => {
+        if (!submitBtn) return;
+        if (isSending) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Transmitting...';
+        } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+        }
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Show simulated send feedback modal
-        const submitBtn = contactForm.querySelector('.form-submit-btn');
-        const originalText = submitBtn.innerHTML;
-        
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-        
-        setTimeout(() => {
-            alert('Your message was successfully captured! (Simulated submission - data verified locally)');
-            contactForm.reset();
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-        }, 1500);
-    });
+        const name = document.getElementById('form-name')?.value;
+        const email = document.getElementById('form-email')?.value;
+        const subject = document.getElementById('form-subject')?.value;
+        const message = document.getElementById('form-message')?.value;
 
-    // Dummy project demo buttons click alert
-    const dummies = document.querySelectorAll('.live-demo-dummy');
-    dummies.forEach(dummy => {
-        dummy.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('This is a demonstrative link placeholder for this portfolio project.');
+        setSendingState(true);
+
+        try {
+            // Attempt to send email through EmailJS module
+            await EmailService.send({ name, email, subject, message });
+            
+            // On success
+            Toast.show('Message Delivered', 'Your message has been sent successfully to Pavithra J.', 'success');
+            form.reset();
+        } catch (error) {
+            // On error
+            Toast.show('Sending Failed', error.message || 'An error occurred. Please try again.', 'error');
+        } finally {
+            setSendingState(false);
+        }
+    };
+
+    const handleDummyClick = (e) => {
+        e.preventDefault();
+        alert('This is a demonstrative link placeholder for this portfolio project.');
+    };
+
+    const init = () => {
+        if (form) {
+            form.addEventListener('submit', handleSubmit);
+        }
+        
+        dummies.forEach(dummy => {
+            dummy.addEventListener('click', handleDummyClick);
         });
-    });
-}
+    };
+
+    return { init };
+})();
+
+// ==========================================================================
+// INITIALIZE SYSTEM
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    PageLoader.init();
+    Navigation.init();
+    ScrollTracker.init();
+    ButtonEffects.init();
+    ContactForm.init();
+});
