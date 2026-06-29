@@ -908,27 +908,27 @@
 
                 <!-- Contact form column -->
                 <div class="contact-form-col" data-reveal="fade-left">
-                    <form class="glass-card contact-form" id="portfolio-contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully! (Demonstration Only)'); this.reset();">
+                    <form class="glass-card contact-form" id="portfolio-contact-form">
                         <h3 class="contact-sub-title">Send a Message</h3>
                         
                         <div class="form-group">
-                            <label for="form-name">Name</label>
-                            <input type="text" id="form-name" placeholder="Pavithra" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Pavithra" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="form-email">Email</label>
-                            <input type="email" id="form-email" placeholder="pavithra.workss@gmail.com" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="pavithra.workss@gmail.com" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="form-subject">Subject</label>
-                            <input type="text" id="form-subject" placeholder="Collaboration / Job Opportunity" required>
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Collaboration / Job Opportunity" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="form-message">Message</label>
-                            <textarea id="form-message" rows="5" placeholder="Write your message here..." required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
                         </div>
 
                         <button type="submit" class="btn-primary ripple-btn form-submit-btn">

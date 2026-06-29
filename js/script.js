@@ -252,10 +252,10 @@ const ContactForm = (() => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const name = document.getElementById('form-name')?.value;
-        const email = document.getElementById('form-email')?.value;
-        const subject = document.getElementById('form-subject')?.value;
-        const message = document.getElementById('form-message')?.value;
+        const name = document.getElementById('name')?.value;
+        const email = document.getElementById('email')?.value;
+        const subject = document.getElementById('subject')?.value;
+        const message = document.getElementById('message')?.value;
 
         setSendingState(true);
 

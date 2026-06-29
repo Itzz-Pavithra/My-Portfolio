@@ -21,7 +21,7 @@ const EmailService = (() => {
             emailjs.init(CONFIG.PUBLIC_KEY);
             console.log('EmailJS initialized successfully.');
         } else {
-            console.warn('EmailJS: Config placeholders are not set. Running in simulation mode.');
+            console.warn('EmailJS: Credentials are not configured correctly.');
         }
     };
 
@@ -64,16 +64,28 @@ const EmailService = (() => {
      * @returns {boolean}
      */
     const isConfigured = () => {
+        const isPlaceholder = (val) => {
+            if (!val) return true;
+            const v = val.trim();
+            const upper = v.toUpperCase();
+            return (
+                upper === '' || 
+                upper.includes('YOUR_') || 
+                upper.includes('PLACEHOLDER') || 
+                upper === 'YOUR_PUBLIC_KEY' || 
+                upper === 'YOUR_SERVICE_ID' || 
+                upper === 'YOUR_TEMPLATE_ID'
+            );
+        };
         return (
-            CONFIG.PUBLIC_KEY && CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' &&
-            CONFIG.SERVICE_ID && CONFIG.SERVICE_ID !== 'YOUR_SERVICE_ID' &&
-            CONFIG.TEMPLATE_ID && CONFIG.TEMPLATE_ID !== 'YOUR_TEMPLATE_ID'
+            CONFIG.PUBLIC_KEY && !isPlaceholder(CONFIG.PUBLIC_KEY) &&
+            CONFIG.SERVICE_ID && !isPlaceholder(CONFIG.SERVICE_ID) &&
+            CONFIG.TEMPLATE_ID && !isPlaceholder(CONFIG.TEMPLATE_ID)
         );
     };
 
     /**
      * Sends the contact form message asynchronously using EmailJS.
-     * Integrates anti-spam validation check.
      * @param {Object} formData 
      * @returns {Promise<any>}
      */
@@ -84,6 +96,11 @@ const EmailService = (() => {
         const validation = validateFields(name, email, subject, message);
         if (!validation.isValid) {
             throw new Error(validation.errorMsg);
+        }
+
+        // Check if EmailJS credentials are configured
+        if (!isConfigured()) {
+            throw new Error('EmailJS configuration credentials (Service ID, Template ID, or Public Key) are missing or invalid.');
         }
 
         const submissionDate = new Date().toLocaleString('en-IN', {
@@ -102,27 +119,13 @@ const EmailService = (() => {
             to_email: 'pavithra.workss@gmail.com'
         };
 
-        // Fallback simulation mode if placeholders are not configured
-        if (!isConfigured()) {
-            console.log('Simulating email sending with parameters:', templateParams);
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // Simulate random anti-spam fail or success
-                    if (name.toLowerCase().includes('spam-test')) {
-                        reject(new Error('Anti-spam validation failed. Please try again.'));
-                    } else {
-                        resolve({ status: 200, text: 'Simulation Success' });
-                    }
-                }, 1500);
-            });
-        }
-
         // Production direct call
         try {
             return await emailjs.send(CONFIG.SERVICE_ID, CONFIG.TEMPLATE_ID, templateParams);
         } catch (error) {
-            console.error('EmailJS SDK Error:', error);
-            throw new Error(error.message || 'Failed to transmit message through EmailJS API.');
+            console.error('EmailJS SDK Error Details:', error);
+            const errorMsg = error && (error.text || error.message || (typeof error === 'string' ? error : JSON.stringify(error)));
+            throw new Error(errorMsg || 'Failed to transmit message through EmailJS API.');
         }
     };
 
